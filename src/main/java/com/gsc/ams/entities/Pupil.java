@@ -21,24 +21,32 @@ public class Pupil {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotBlank(message = "Label is mandatory")
-    @Column(name = "label")
-    private String label;
+    @NotBlank(message = "Firstname is mandatory")
+    @Column(name = "firstname")
+    private String firstname;
     
+    @NotBlank(message = "Lastname is mandatory")
+    @Column(name = "lastname")
+    private String lastname;
     
+    @Column(name = "phone")
+    private int phone;
+    
+    @Column(name = "email")
+    private String email;
  
-    @Column(name = "Tall")
-    private float tall;
+    @Column(name = "age")
+    private float age;
     
-    @Column(name = "picture")
-    private String picture;
+  
 
     public Pupil() {}
 
-    public Pupil(String label, float tall, String picture) {
-        this.tall = tall;
-        this.label = label;
-        this.picture = picture;
+    public Pupil(String lastname,String email, float age,  String firstname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.age= age;
         }
 
     public void setId(long id) {
@@ -49,50 +57,40 @@ public class Pupil {
         return id;
     }
 
-	public String getLabel() {
-		return label;
+	public String getFirstname() {
+		return firstname;
 	}
-
-	public void setLabel(String label) {
-		this.label = label;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
-
-	public float getTall() {
-		return tall;
-	}
-
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
-	public String getPicture() {
-		return picture;
-	}
-
-	public void setTall(float tall) {
-		this.tall = tall;
-	}
-
 	
-	/**** Many To One ****/
+	public String getLastname() {
+		return lastname;
+	}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+	public int getPhone() {
+		return phone;
+	}
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
-	/****
-	 * 
-	 FetchType.LAZY = Doesn’t load the relationships unless explicitly “asked for” via getter
-     FetchType.EAGER = Loads ALL relationships
-	 */
-	
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "teacher_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Teacher teacher;
-	
-	
-	public Teacher getTeacher() {
-    	return teacher;
-    }
-    
-    public void setTeacher(Teacher teacher) {
-    	this.teacher=teacher;
-    }  
-    
+
+	public float getAge() {
+		return age;
+	}
+	public void setAge(float age) {
+		this.age = age;
+	}
 }
+
+
+
